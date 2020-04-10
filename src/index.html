@@ -18,31 +18,7 @@
 
 <body>
   <div class="drop_container"></div>
-  <script>
-    const fileDropContainer = document.querySelector(".drop_container");
-    fileDropContainer.ondragover = function (e) {
-      e.preventDefault();
-    }
-    fileDropContainer.ondrop = function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      const items = e.dataTransfer.items;
-      for (let i = 0; i < items.length; i++) {
-        if (items[i].kind != "file") {
-          continue;
-        }
-        const entry = items[i].webkitGetAsEntry();
-        const reader = entry.createReader();
-        reader.readEntries(function (entries) {
-          entries.forEach(element => {
-            if (element.isFile) {
-              element.file(function (file) { console.log(file) });
-            }
-          });
-        });
-      }
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 
 </html>
